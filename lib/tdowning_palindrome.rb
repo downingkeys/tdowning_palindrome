@@ -1,6 +1,6 @@
-require_relative "tdowning_palindrome/version"
+require "tdowning_palindrome/version"
 
-class String
+module TdowningPalindrome
 
   # Returns true for a palindrome, false otherwise.
   def palindrome?
@@ -11,6 +11,14 @@ class String
 
     # Returns content for palindrome testing.
     def processed_content
-      scan(/[a-z]/i).join.downcase
+      to_s.scan(/[a-z\d]/i).join.downcase
     end
+end
+
+class String
+  include TdowningPalindrome
+end
+
+class Integer
+  include TdowningPalindrome
 end
